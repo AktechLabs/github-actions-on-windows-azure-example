@@ -15,9 +15,14 @@ jobs:
           cmd /c curl -OL https://github.com/msys2/msys2-installer/releases/download/2024-01-13/msys2-x86_64-20240113.exe
           cmd /c .\msys2-x86_64-20240113.exe in --confirm-command --accept-messages --root C:/msys64
 
-      - name: Run bash command
-        shell: bash
+      - name: Get Hostname
         run: |
-          uname -a
-          ls
+          hostname
+    
+      - name: pwd and dir
+        run: |
           pwd
+          dir
+    
+      - name: Number of processors
+        run: echo %NUMBER_OF_PROCESSORS%
