@@ -1,0 +1,23 @@
+# This is a basic workflow running on Azure cloud
+
+name: GitHub Actions on Azure Cloud
+
+on: push
+jobs:
+  build:
+    runs-on: "cirun-azure-windows-runner--${{ github.run_id }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.0.0
+
+      - name: Setup MSYS2
+        run: |
+          cmd /c curl -OL https://github.com/msys2/msys2-installer/releases/download/2024-01-13/msys2-x86_64-20240113.exe
+          cmd /c .\msys2-x86_64-20240113.exe in --confirm-command --accept-messages --root C:/msys64
+
+      - name: Run bash command
+        shell: bash
+        run: |
+          uname -a
+          ls
+          pwd
