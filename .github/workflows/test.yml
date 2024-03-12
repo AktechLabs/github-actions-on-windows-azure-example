@@ -5,7 +5,7 @@ name: GitHub Actions on Azure Cloud
 on: push
 jobs:
   build:
-    runs-on: "cirun-azure-windows-runner--${{ github.run_id }}"
+    runs-on: "cirun-runner-windows-runner-specialized--${{ github.run_id }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v4.0.0
