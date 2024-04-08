@@ -1,20 +1,13 @@
 runners:
-  - name: "azure-windows-runner"
-    cloud: "azure"
-    region: "uksouth"
-    instance_type: "Standard_D2s_v3"
-    machine_image:
-      publisher: microsoftwindowsdesktop
-      offer: windows-11
-      sku: win11-22h2-pro
-      version: latest
-    labels:
-      - "cirun-azure-windows-runner"
-
   - name: azure-windows-runner
     cloud: azure
     region: uksouth
     instance_type: Standard_D2s_v3
-    machine_image: "/subscriptions/7b9d1535-2655-4887-a82c-accb37d605a8/resourceGroups/specialized-vm_group/providers/Microsoft.Compute/galleries/base_images/images/win11-23h2-pro-x64/versions/2024.02.27"
+    machine_image: "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest"
     labels:
-      - cirun-runner-windows-runner-specialized
+      - cirun-runner
+    extra_config:
+      licenseType: "Windows_Server"
+      storageProfile:
+        osDisk:
+          diskSizeGB: 512

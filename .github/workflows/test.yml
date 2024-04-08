@@ -1,28 +1,25 @@
 # This is a basic workflow running on Azure cloud
+name: Cirun Runner
 
-name: GitHub Actions on Azure Cloud
+on:
+  push
 
-on: push
 jobs:
   build:
-    runs-on: "cirun-runner-windows-runner-specialized--${{ github.run_id }}"
+    permissions: write-all
+    runs-on: "cirun-runner--${{ github.run_id }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v4.0.0
 
-      - name: Setup MSYS2
-        run: |
-          cmd /c curl -OL https://github.com/msys2/msys2-installer/releases/download/2024-01-13/msys2-x86_64-20240113.exe
-          cmd /c .\msys2-x86_64-20240113.exe in --confirm-command --accept-messages --root C:/msys64
+      - name: systeminfo
+        run: systeminfo
 
-      - name: Get Hostname
+      - name: Run ls and pwd
         run: |
-          hostname
-    
-      - name: pwd and dir
-        run: |
+          ls
           pwd
-          dir
-    
-      - name: Number of processors
-        run: echo %NUMBER_OF_PROCESSORS%
+
+      - name: Get-Disk
+        run: Get-Disk
+                  
